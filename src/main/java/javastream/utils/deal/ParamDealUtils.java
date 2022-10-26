@@ -1,13 +1,10 @@
 package javastream.utils.deal;
 
-import javastream.entity.Contact;
 import javastream.entity.Deal;
 import javastream.uriParamsCreator.UriParamsCreator;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * ParamLeadUtils.
@@ -30,6 +27,30 @@ public class ParamDealUtils {
     private final static String NUMBER_DIPLOMA = "UF_CRM_1432203740";
     private final static String DATE_DIPLOMA = "UF_CRM_1432203754";
 
+    public UriParamsCreator addMethod(Deal deal) throws UnsupportedEncodingException {
+        UriParamsCreator params = createFieldsForAddMethod(deal);
+        params.build();
+        return params;
+    }
+
+    private UriParamsCreator createFieldsForAddMethod(Deal deal) throws UnsupportedEncodingException {
+        UriParamsCreator params = new UriParamsCreator();
+
+        params.put(LEVEL_OBR, check(deal.getLevel_obr()));
+        params.put(FORM_OBR, check(deal.getForm_obr()));
+        params.put(DATE_DOC, check(deal.getDate_doc()));
+        params.put(START_LEARN, check(deal.getStart_learn()));
+        params.put(DOC_NUMBER, check(deal.getDoc_number()));
+        params.put(COST_OBR, check(deal.getCost_obr()));
+        params.put(PROFILE, check(deal.getProfile()));
+        params.put(NAPRAVLENIE, check(deal.getNapraflenie()));
+        params.put(SERIY_DIPLOMA, check(deal.getSeriy_diplom()));
+        params.put(NUMBER_DIPLOMA, check(deal.getNumber_diplom()));
+        params.put(DATE_DIPLOMA, check(deal.getDate_diplom()));
+
+
+        return params;
+    }
 
     public UriParamsCreator getMethod(Integer idDead) {
         UriParamsCreator params = new UriParamsCreator();
@@ -62,14 +83,8 @@ public class ParamDealUtils {
         params.put(NUMBER_DIPLOMA, check(deal.getNumber_diplom()));
         params.put(DATE_DIPLOMA, check(deal.getDate_diplom()));
 
-        return createFinalParams(params, deal);
-    }
-
-    private UriParamsCreator createFinalParams(UriParamsCreator params, Deal deal) throws UnsupportedEncodingException {
-
         return params;
     }
-
 
 
 }

@@ -2,13 +2,9 @@ package javastream.entity;
 
 import com.google.gson.annotations.SerializedName;
 import javastream.entity.model.Email;
-import javastream.entity.model.Messenger;
 import javastream.entity.model.Phone;
-import javastream.entity.model.Website;
 import lombok.Data;
 import lombok.ToString;
-
-import java.util.Date;
 import java.util.List;
 
 /**
